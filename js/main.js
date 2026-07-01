@@ -103,7 +103,7 @@ function copyPowerTunnelURL() {
 }
 
 function copyIOS() {
-  const url = "https://soulps.vercel.app/ios";
+  const url = "https://soulps.vercel.app/ios.conf";
   navigator.clipboard.writeText(url)
     .then(() => showNotification('🍎 iOS URL disalin!'))
     .catch(() => showNotification('Gagal', 'error'));

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoulPS — Private Server</title>
+    <meta name="description" content="SoulPS — Embrace the Red. A dark Growtopia Private Server." />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-gradient"></div>
+        <div class="background-pattern"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <img src="img/soulps.png" alt="SoulPS" class="title-img" id="titleLogo"
+            onerror="this.style.display='none'; document.getElementById('fallbackTitle').style.display='block';" />
+            <h1 class="title-fallback" id="fallbackTitle" style="display: none;"><span class="glitch" data-text="SOUL PS">SOUL PS</span></h1>
+            <div class="cloud-layer" aria-hidden="true"></div>
+        </header>
+
+        <section class="host-section">
+            <div class="host-label">
+                <i class="material-icons-round">extension</i>
+                ALL HOST
+                <span class="server-status"><span class="status-dot"></span> Online</span>
+            </div>
+
+            <textarea id="hostText" hidden>
+91.134.85.13 growtopia1.com
+91.134.85.13 growtopia2.com
+91.134.85.13 www.growtopia1.com
+91.134.85.13 www.growtopia2.com
+</textarea>
+
+            <div class="button-grid">
+                <button class="btn btn-copy" onclick="copyHost()"><i class="material-icons-round">content_copy</i> Copy IP</button>
+                <button class="btn btn-dl" onclick="downloadHost()"><i class="material-icons-round">download</i> Download Host File</button>
+                <button class="btn btn-url" onclick="copyPowerTunnelURL()"><i class="material-icons-round">link</i> PowerTunnel URL</button>
+                <button class="btn btn-ios" onclick="copyIOS()"><img src="img/svg/ios.svg" alt="iOS" class="btn-icon" /> iOS Host URL</button>
+            </div>
+        </section>
+
+        <section class="instructions">
+            <div class="instruction-card">
+                <div class="card-header"><div class="card-icon android"><i class="material-icons-round">android</i></div><h3>Panduan Android</h3></div>
+                <ol class="card-steps">
+                    <li>Unduh <a href="https://sfile.mobi/9yeA3hP6fYz" target="_blank">PowerTunnel</a></li>
+                    <li>Klik <strong>PowerTunnel URL</strong> di atas</li>
+                    <li>Buka PowerTunnel → Host Settings</li>
+                    <li>Tempel URL, atur update <strong>on start</strong></li>
+                    <li>Buka Growtopia!</li>
+                </ol>
+
+                <div class="card-header" style="margin-top:2rem;"><div class="card-icon ios"><i class="material-icons-round">phone_iphone</i></div><h3>Panduan iOS</h3></div>
+                <ol class="card-steps">
+                    <li>Unduh <a href="https://apps.apple.com/app/surge-5/id1442620678" target="_blank">Surge 5</a></li>
+                    <li>Import → Download Profile from URL</li>
+                    <li>Masukkan URL dari <strong>iOS Host URL</strong></li>
+                    <li>Setup VPN, buka Growtopia</li>
+                </ol>
+
+                <div class="card-header" style="margin-top:2rem;"><div class="card-icon windows"><i class="material-icons-round">laptop_windows</i></div><h3>Panduan Windows</h3></div>
+                <ol class="card-steps">
+                    <li>Win+R, ketik <code>C:\Windows\System32\drivers\etc</code></li>
+                    <li>Buka <code>hosts</code> dengan Notepad (Admin)</li>
+                    <li>Tambahkan <button onclick="copyHost()" class="inline-copy">IP & DOMAIN</button></li>
+                    <li>Simpan, buka Growtopia</li>
+                </ol>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 <strong>SoulPS</strong> — Embrace the Red</p>
+        </footer>
+    </div>
+
+    <div id="notification"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>

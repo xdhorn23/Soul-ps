@@ -96,14 +96,14 @@ function downloadHost() {
 }
 
 function copyPowerTunnelURL() {
-  const url = "https://soulps.vercel.app/soulps.host";
+  const url = "https://soulps.vercel.app/ptunnel.txt";
   navigator.clipboard.writeText(url)
     .then(() => showNotification('🔗 PowerTunnel URL disalin!'))
     .catch(() => showNotification('Gagal', 'error'));
 }
 
 function copyIOS() {
-  const url = "https://soulps.vercel.app/ios.conf";
+  const url = "https://soulps.vercel.app/ios.txt";
   navigator.clipboard.writeText(url)
     .then(() => showNotification('🍎 iOS URL disalin!'))
     .catch(() => showNotification('Gagal', 'error'));

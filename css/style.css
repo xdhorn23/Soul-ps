@@ -91,7 +91,7 @@ body {
 
 /* Fallback glitch text */
 .title-fallback {
-  font-size: 4rem;
+  font-size: 8rem;
   text-transform: uppercase;
   color: var(--red-primary);
   text-shadow: 0 0 10px var(--red-glow), 0 0 30px #b30000;

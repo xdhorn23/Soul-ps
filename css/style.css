@@ -1,0 +1,355 @@
+:root {
+  --bg-deep: #0a0000;
+  --bg-card: rgba(20, 0, 0, 0.75);
+  --red-primary: #e63946;
+  --red-glow: #ff4444;
+  --text: #f1f1f1;
+  --text-secondary: #ccc;
+  --border: rgba(255, 50, 50, 0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== BACKGROUND CUSTOM ========== */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: url('../img/the_next_solana.png') no-repeat center center / cover;
+  /* Gambar akan menutupi seluruh area, responsif */
+  background-attachment: fixed; /* Agar tetap diam saat scroll, seperti DEMON PS */
+  overflow: hidden;
+}
+
+/* Gradient overlay agar konten tetap terbaca */
+.background-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(139, 0, 0, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(180, 0, 0, 0.08) 0%, transparent 50%);
+}
+
+/* Pattern titik-titik merah redup */
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 50, 50, 0.15) 1px, transparent 0);
+  background-size: 30px 30px;
+  opacity: 0.4;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== HEADER & LOGO ========== */
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0 1rem;
+  min-height: unset;
+  margin-bottom: 1rem;
+}
+.title-img {
+  display: block;
+  margin: 0 auto;
+  width: clamp(220px, 45vw, 520px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: logoAppear 0.9s ease-out forwards;
+}
+@keyframes logoAppear {
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* Fallback glitch text */
+.title-fallback {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: var(--red-primary);
+  text-shadow: 0 0 10px var(--red-glow), 0 0 30px #b30000;
+  display: none;
+}
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  opacity: 0.8;
+}
+.glitch::before {
+  color: #ff0000;
+  z-index: -1;
+  animation: glitch 0.3s infinite;
+}
+.glitch::after {
+  color: #00ffff;
+  z-index: -2;
+  animation: glitch 0.3s infinite reverse;
+}
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
+
+/* ========== CLOUD ANIMATION (SAMA SEPERTI DEMON PS) ========== */
+.cloud-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(120px, 25vh, 220px);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.cloud {
+  --w: 180px;
+  --dur: 36s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--w);
+  aspect-ratio: 2 / 1;
+  background: url('../img/awan.png') center/contain no-repeat;
+  opacity: 0.7;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+  will-change: left;
+}
+.cloud--rtl {
+  animation: slide-rtl var(--dur) linear forwards;
+}
+.cloud--ltr {
+  animation: slide-ltr var(--dur) linear forwards;
+}
+@keyframes slide-rtl {
+  from { left: calc(100% + var(--w)); }
+  to { left: calc(-1 * var(--w)); }
+}
+@keyframes slide-ltr {
+  from { left: calc(-1 * var(--w)); }
+  to { left: calc(100% + var(--w)); }
+}
+
+/* ========== HOST SECTION ========== */
+.host-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin: 2rem 0 3rem;
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+.host-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.server-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #4caf50;
+}
+.status-dot {
+  width: 10px; height: 10px;
+  background: #4caf50;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #4caf50;
+}
+
+/* ========== BUTTONS ========== */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1rem;
+}
+@media (max-width: 1024px) {
+  .button-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .button-grid { grid-template-columns: 1fr; }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: linear-gradient(135deg, #1a0000, #2e0000);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.15), transparent);
+  transition: left 0.6s;
+}
+.btn:hover::before { left: 100%; }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+  border-color: var(--red-glow);
+}
+.btn-copy { background: linear-gradient(135deg, #300000, #500000); }
+.btn-dl   { background: linear-gradient(135deg, #3a0000, #5c0000); }
+.btn-url  { background: linear-gradient(135deg, #400000, #660000); }
+.btn-ios  { background: linear-gradient(135deg, #2e0000, #4a0000); }
+
+/* ========== INSTRUCTION CARD ========== */
+.instructions {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.instruction-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.card-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--red-primary);
+  color: white;
+}
+.card-steps {
+  list-style: none;
+  counter-reset: step-counter;
+}
+.card-steps li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+.card-steps li::before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.8rem; height: 1.8rem;
+  background: var(--red-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.card-steps a { color: var(--red-glow); text-decoration: underline; }
+code, kbd {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.inline-copy {
+  background: var(--red-primary);
+  border: none;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border);
+  color: #aaa;
+}
+
+/* ========== NOTIFICATION TOAST ========== */
+#notification {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  background: rgba(30, 0, 0, 0.9);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.4s;
+  z-index: 9999;
+}
+
+/* ========== KEYFRAMES ========== */
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(30px); }
+  to { opacity:1; transform: translateY(0); }
+}

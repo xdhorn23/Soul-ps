@@ -1,14 +1,14 @@
 {
   "headers": [
     {
-      "source": "/ptunnel",
+      "source": "/ptunnel.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Content-Disposition", "value": "inline" }
       ]
     },
     {
-      "source": "/iosconf",
+      "source": "/iosconf.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Content-Disposition", "value": "inline" }

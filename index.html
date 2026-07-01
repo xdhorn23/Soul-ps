@@ -17,9 +17,11 @@
 
     <div class="container">
         <header class="header">
-            <img src="img/soulps.png" alt="SoulPS" class="title-img" id="titleLogo"
+            <img src="soulps.png" alt="SoulPS" class="title-img" id="titleLogo"
             onerror="this.style.display='none'; document.getElementById('fallbackTitle').style.display='block';" />
-            <h1 class="title-fallback" id="fallbackTitle" style="display: none;"><span class="glitch" data-text="SOUL PS">SOUL PS</span></h1>
+            <h1 class="title-fallback" id="fallbackTitle" style="display: none;">
+                <span class="glitch" data-text="SOUL PS">SOUL PS</span>
+            </h1>
             <div class="cloud-layer" aria-hidden="true"></div>
         </header>
 
@@ -41,7 +43,11 @@
                 <button class="btn btn-copy" onclick="copyHost()"><i class="material-icons-round">content_copy</i> Copy IP</button>
                 <button class="btn btn-dl" onclick="downloadHost()"><i class="material-icons-round">download</i> Download Host File</button>
                 <button class="btn btn-url" onclick="copyPowerTunnelURL()"><i class="material-icons-round">link</i> PowerTunnel URL</button>
-                <button class="btn btn-ios" onclick="copyIOS()"><img src="img/svg/ios.svg" alt="iOS" class="btn-icon" /> iOS Host URL</button>
+                <button class="btn btn-ios" onclick="copyIOS()">
+                    <img src="ios.svg" alt="iOS" class="btn-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
+                    <i class="material-icons-round ios-fallback" style="display:none;">phone_iphone</i>
+                    iOS Host URL
+                </button>
             </div>
         </section>
 
@@ -82,4 +88,4 @@
     <div id="notification"></div>
     <script src="js/main.js"></script>
 </body>
-</html>
+    </html>
